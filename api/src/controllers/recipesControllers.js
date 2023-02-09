@@ -5,7 +5,7 @@ const { Recipe } = require('../db.js');
 const { Op } = require("sequelize");
 
 const getAllRecipes = async () => {
-    const res = (await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=1`)).data
+    const res = (await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=3`)).data
     const apiRecipes = res.results
 
     const dbRecipes = await Recipe.findAll()

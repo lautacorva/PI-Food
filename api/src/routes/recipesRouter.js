@@ -10,19 +10,21 @@ router.get('/', async (req, res) => {
             const controller = await getRecipesByName(name)
             res.status(200).send(controller)
         } catch (error) {
-            res.status(404).json({ err: error.message })
-            console.log(error);
+            res.status(error.response.status).json({ err: error.message })
+            console.log(error.response.data);
         }
     } else {
         try {
             const controller = await getAllRecipes()
             res.status(200).send(controller)
         } catch (error) {
-            res.status(404).json({ err: error.message })
-            console.log(error);
+            res.status(error.response.status).json({ err: error.message })
+            console.log(error.response.data);
         }
     }
 });
+
+
 
 router.get('/:id', async (req, res) => {
     const { id } = req.params

@@ -19,8 +19,6 @@ export default function Home(props) {
         dispatch(getRecipes())
     })
 
-    console.log(recipes);
-
     if (recipes.length === 0) {
         return (
             <div className={s.loading}>
@@ -34,7 +32,7 @@ export default function Home(props) {
         <div className={s.cards}>
             {
                 recipes.map((recipe) => {
-                    return <Card key={recipe.id} id={recipe.id} title={recipe.title} image={recipe.image} diets={recipe.diets} />                                     
+                    return <RecipeCard  key={recipe.id} id={recipe.id}  title={recipe.title} image={recipe.image} diets={recipe.diets} />                                     
                 })
             }
         </div>

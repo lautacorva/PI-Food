@@ -1,5 +1,9 @@
 * { box-sizing: border-box; }
 
+span {
+  color: steelblue;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

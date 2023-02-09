@@ -1,13 +1,13 @@
-.container{
+.container {
     display: flex;
-    border: 1px solid black;
-    margin: 10px 0px;
+    margin: 5px 0px;
+    margin-top: 15px;
     height: 70px;
     width: 100%;
     align-items: center;
 }
 
-.img_container{
+.img_container {
     background-image: url('../../media/healthy.png');
     background-position: center center;
     background-size: cover;
@@ -17,11 +17,11 @@
     margin: 0px 5px;
 }
 
-h3{
+.hs {
     font-size: 16px;
 }
 
-p{
+.info {
     width: 55%;
     text-align: left;
     font-size: 11px;
@@ -29,8 +29,21 @@ p{
     color: rgb(59, 59, 59);
 }
 
-@media (min-width: 913px){
-    .container{
+@media (min-width: 913px) {
+    .container {
         margin-top: 180px;
+    }
+
+    .img_container {
+        height: 40px;
+        width: 40px;
+    }
+
+    .hs{
+        font-size: 19px;
+    }
+
+    .info {
+        font-size: 14px;
     }
 }

@@ -1,0 +1,42 @@
+.container{
+    margin-top: 30px;
+    display: flex;
+    height: 40px;
+    border-radius: 16px;
+    background-color: white;
+}
+
+.img_container{
+    background-image: url('../../media/lupa.png');
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 10%;
+    margin-left: 7px;
+}
+
+.input_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70vw;
+}
+
+.input{
+    width: 95%;
+    height: 80%;
+    border: none;
+    outline: none;
+    font-size: 19px;
+    margin-left: -5%;
+}
+
+@media (min-width: 913px){
+    .container{
+        margin-top: 0;
+    }
+    
+    .input_container{
+        width: 40vw;
+    }
+}

@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+}
+
+.line{
+    font-size: 90px;
+    font-weight: 100;
+}
+
+.log_container_C{
+    width: 150px;
+    height: 150px;
+    background-image: url('../../media/cooking.png');
+    background-position: center center;
+    background-size: cover;
+}
+
+.log_container_H{
+    width: 150px;
+    height: 150px;
+    background-image: url('../../media/henry.png');
+    background-position: center center;
+    background-size: cover;
+    margin-left: 6px;
+}

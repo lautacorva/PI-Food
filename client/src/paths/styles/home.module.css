@@ -1,0 +1,28 @@
+.cards {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 763px) {
+    .cards {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+}
+
+@media (min-width: 913px) {
+    .cards {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 220px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .cards {
+        padding: 80px;
+    }
+}

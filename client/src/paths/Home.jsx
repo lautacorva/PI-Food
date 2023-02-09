@@ -34,7 +34,7 @@ export default function Home(props) {
         <div className={s.cards}>
             {
                 recipes.map((recipe) => {
-                    return <Card key={recipe.id} id={recipe.id} title={recipe.title} image={recipe.image} />                                     
+                    return <Card key={recipe.id} id={recipe.id} title={recipe.title} image={recipe.image} diets={recipe.diets} />                                     
                 })
             }
         </div>

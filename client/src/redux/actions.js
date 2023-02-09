@@ -11,5 +11,6 @@ export function getRecipes(name) {
                     payload: response.data
                 }
             ))
+            .catch(err => console.log(err))
     }
 }

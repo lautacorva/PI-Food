@@ -1,5 +1,5 @@
 import Nav from '../components/Nav'
-import Card from '../components/Card'
+import RecipeCard from '../components/Card'
 import s from './styles/home.module.css'
 import { getRecipes } from '../redux/actions'
 import { useSelector, useDispatch } from 'react-redux'
@@ -11,7 +11,7 @@ export default function Home(props) {
     // useEffect -> despacha una acción (EN ACTIONS ESTÁN LAS ACTIONS QUE REALIZAN LA PETICION)
     // useEffect --> dispatch(getRecipes) --> getRecipes axios(para cargar el array de recipes en su payload) --> 
     // reducer recibe y setea el STATE con el array. ;)
-    
+
     const dispatch = useDispatch()
     const recipes = useSelector(state => state.recipes)
 
@@ -19,12 +19,22 @@ export default function Home(props) {
         dispatch(getRecipes())
     })
 
+    console.log(recipes);
+
+    if (recipes.length === 0) {
+        return (
+            <div className={s.loading}>
+                <h3>Loading...</h3>
+            </div>
+        )
+    }
+
     return (<>
         <Nav></Nav>
         <div className={s.cards}>
             {
-                recipes.map(rcp => {
-                    return <Card key={rcp.id} id={rcp.id} title={rcp.title} image={rcp.image}></Card>
+                recipes.map((recipe) => {
+                    return <Card key={recipe.id} id={recipe.id} title={recipe.title} image={recipe.image} />                                     
                 })
             }
         </div>

@@ -1,0 +1,36 @@
+.container{
+    display: flex;
+    border: 1px solid black;
+    margin: 10px 0px;
+    height: 70px;
+    width: 100%;
+    align-items: center;
+}
+
+.img_container{
+    background-image: url('../../media/healthy.png');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 35px;
+    width: 35px;
+    margin: 0px 5px;
+}
+
+h3{
+    font-size: 16px;
+}
+
+p{
+    width: 55%;
+    text-align: left;
+    font-size: 11px;
+    margin-left: auto;
+    color: rgb(59, 59, 59);
+}
+
+@media (min-width: 913px){
+    .container{
+        margin-top: 180px;
+    }
+}

@@ -5,7 +5,7 @@ export default function HealthScore(props) {
         <div className={s.container}>
             <div className={s.img_container}></div>
             <h3 className={s.hs}>Health Score: <span>80</span></h3>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis pariatur eveniet nulla fuga necessitatibus cumque, tempora consequatur voluptatem dolore error distinctio quasi quibusdam aperiam deleniti quo inventore ex dolor. Consectetur.</p>
+            <p> ⓘ 'Health Score' (HS) is a scoring system that evaluates foods based on their nutrients, calories, etc. From 0 to 100, with foods with a HS closest to 100 being the healthiest.</p>
         </div>
     )
 }

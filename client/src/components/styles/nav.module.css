@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     border-bottom: 1px solid black;
+    height: 35vh;
     padding: 30px;
     background-image: linear-gradient(0deg,
             rgba(0, 0, 0, 0),
@@ -14,6 +15,7 @@
         flex-direction: row;
         justify-content: space-between;
         width: 100%;
+        height: 25vh;
         position: fixed;
         top: 0;
         z-index: 100;

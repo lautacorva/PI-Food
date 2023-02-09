@@ -2,11 +2,11 @@ import Logos from './Logos'
 import Search from './Search'
 import s from './styles/nav.module.css'
 
-export default function Nav(params) {
+export default function Nav(props) {
     return(
         <div className={s.container}>
-            <Logos></Logos>
-            <Search></Search>
+            <Logos/>
+            <Search/>
         </div>
     )
 }

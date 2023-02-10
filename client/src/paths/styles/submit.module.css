@@ -1,0 +1,13 @@
+.container{
+    padding: 15px;
+}
+
+.banner{
+    background-image: url('../../media/submit.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 25vh;
+    margin: 40px 0px;
+}
+

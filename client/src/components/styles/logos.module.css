@@ -3,15 +3,15 @@
 }
 
 .line{
-    color: black;
+    color: var(--main-black-color);
     font-size: 78px;
     font-weight: 100;
 }
 
-.log_container_C{
+.log_container_B{
     width: 120px;
     height: 120px;
-    background-image: url('../../media/cooking.png');
+    background-image: url('../../media/book.png');
     background-position: center center;
     background-size: cover;
 }
@@ -23,4 +23,8 @@
     background-position: center center;
     background-size: cover;
     margin-left: 6px;
+}
+
+.log_container_H:hover{
+    cursor: pointer;
 }

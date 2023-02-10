@@ -1,4 +1,17 @@
-* { box-sizing: border-box; }
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
+
+:root {
+  --main-white-color: #F5F1E4;
+  --main-traslucent-blue-color: rgba(70, 131, 180, 0.808);
+  --main-brown-color: #A1862F;
+  --main-blue-color:rgb(70, 131, 180);
+  --main-black-color: rgb(48, 46, 46);
+}
+
+
+* {
+  box-sizing: border-box;
+}
 
 span {
   color: steelblue;
@@ -16,4 +29,15 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1{
+  font-size: 40px;
+}
+
+@media (min-width: 913px) {
+  h1 {
+    text-align: left;
+    font-size: 60px;
+  }
 }

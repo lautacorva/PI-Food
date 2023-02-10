@@ -35,17 +35,36 @@
 }
 
 .title{
-    font-size: 14vh;
+    font-family: 'Marck Script', cursive;    
+    color: var(--main-white-color);
+    font-size: 20vh;
+    margin: 15px;
+    text-shadow: 0px 0px 10px black;
 }
 
 .button{
-    font-size: 5vh;
-    padding: 5px 30px;
+    width: 380px;
+    padding: 2px;
+    font-size: 33px;
+    font-weight: 900;
+    border-radius: 15px;
+    border: 9px double var(--main-white-color);
+    background-color: var(--main-traslucent-blue-color);
+    color: var(--main-white-color);
+    /* box-shadow: 0px 4px 5px black; */    
 }
 
 .button:hover{
     cursor: pointer;
-    
+    background-color: rgb(50, 92, 126);
+}
+
+.foot{
+    margin-top: 50px;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--main-brown-color);
+    text-shadow: 0px 0px 3px grey;
 }
 
 

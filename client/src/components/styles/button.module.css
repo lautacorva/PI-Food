@@ -1,0 +1,21 @@
+.button{
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+    background-image: url('../../media/arrow-button.png');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    outline: none;
+    border: 1px solid whitesmoke;
+    background-color: none;
+    margin: 15px;
+    box-shadow: 0px 0px 9px black;
+    transition: 0.2s;
+}
+
+.button:hover{
+    cursor: pointer;
+    background-image: url('../../media/arrow-button-hover.png');
+    box-shadow: 0px 0px 6px black;
+}

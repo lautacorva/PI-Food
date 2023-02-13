@@ -8,19 +8,18 @@ import DbDetail from "../components/DetailDb"
 export default function Detail(props) {
     const [Recipe, setRecipe] = useState(null)
     const { id } = useParams()
-    console.log(id);
+
 
     const regex = new RegExp("^[0-9]+$")
 
     useEffect(() => {
         axios.get(`http://localhost:3001/recipes/${id}`)
             .then(response => {
-                console.log(response.data);
                 setRecipe(response.data)
+                console.log(response.data);
             })
             .catch(err => console.log(err))
-    })
-    console.log(Recipe);
+    }, [id])
 
     if (Recipe == null) {
         return (
@@ -32,7 +31,7 @@ export default function Detail(props) {
         if (regex.test(id)) {
             return (
                 <ApiDetail
-                    key={Recipe.id}
+                    key={id}
                     healthScore={Recipe.healthScore}
                     title={Recipe.title}
                     diets={Recipe.diets} // DIETS es un array
@@ -45,7 +44,7 @@ export default function Detail(props) {
         } else {
             return (
                 <DbDetail
-                    key={Recipe.id}
+                    key={id}
                     healthScore={Recipe.healthScore}
                     title={Recipe.title}
                     diets={Recipe.diets} // DIETS es un array

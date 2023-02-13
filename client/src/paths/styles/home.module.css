@@ -1,3 +1,10 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .cards {
     padding: 15px;
     display: flex;
@@ -13,16 +20,19 @@
 }
 
 @media (min-width: 913px) {
+    .container{
+        margin-top: 220px;
+    }
+
     .cards {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-around;
-        margin-top: 220px;
     }
 }
 
 @media (min-width: 1400px) {
     .cards {
-        padding: 80px;
+        padding: 0px 80px;
     }
 }

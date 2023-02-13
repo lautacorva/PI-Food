@@ -3,9 +3,9 @@ const router = Router();
 const { getAllRecipes, getRecipesByName, getRecipesById, createRecipe } = require('../controllers/recipesControllers.js')
 
 router.get('/', async (req, res) => {
-    const { name } = req.query
+    const { name, offset } = req.query
 
-    if (name && name != undefined) {
+    if (name && name != 'undefined') {
         try {
             const controller = await getRecipesByName(name)
             res.status(200).send(controller)
@@ -13,9 +13,11 @@ router.get('/', async (req, res) => {
             res.status(error.response.status).json({ err: error.message })
             console.log(error.response.data);
         }
+
     } else {
+
         try {
-            const controller = await getAllRecipes()
+            const controller = await getAllRecipes(offset)
             res.status(200).send(controller)
         } catch (error) {
             res.status(error.response.status).json({ err: error.message })

@@ -1,9 +1,9 @@
-import { GET_RECIPES } from "./actions-type.js";
+import { GET_RECIPES, CHANGE_PAGE } from "./actions-type.js";
 
 const initialState = {
     diets: [],
     recipes: [],
-    i: false
+    offset: 0
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -13,7 +13,11 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 recipes: [...action.payload],
             }
-            
+        case CHANGE_PAGE:
+            return{
+                ...state,
+                offset: action.payload
+            }
         default:
             return state
     }

@@ -4,37 +4,18 @@ const { API_KEY } = process.env;
 const { Recipe } = require('../db.js');
 const { Op } = require("sequelize");
 
-const getAllRecipes = async () => {
-    const res = (await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=18`)).data
-    const apiRecipes = res.results
-
-    const dbRecipes = await Recipe.findAll()
-
-    const allRecipes = [...apiRecipes, ...dbRecipes]
-    return allRecipes
-}
-
-const getRecipesByName = async (name) => {
-    const res = (await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${name}&number=9`)).data;
-    const apiRecipes = res.results
-
-    const dbRecipes = await Recipe.findAll({
-        where: {
-            title: {
-                [Op.iLike]: `%${name}%`
-            }
+const cleanerFunctionAll = (recipes) => {
+    recipes.map(r => {
+        return {
+            id: r.id,
+            title: r.title,
+            diets: r.diets,
+            image: r.image
         }
     })
+}
 
-    const allRecipes = [...apiRecipes, ...dbRecipes]
-
-    if (allRecipes.length == 0) { throw new Error('Cannot find your recipe') }
-
-    return allRecipes
-};
-
-
-const cleanerFunction = (r) => {
+const cleanerFunctionID = (r) => {
     return {
         id: r.id,
         title: r.title,
@@ -53,6 +34,36 @@ const cleanerFunction = (r) => {
 }
 
 
+const getAllRecipes = async (offset) => {
+    const res = (await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&offset=${offset}&addRecipeInformation=true&number=9`)).data
+    const apiRecipes = res.results
+
+    const dbRecipes = await Recipe.findAll()
+
+    const allRecipes = [...apiRecipes, ...dbRecipes]
+    return allRecipes
+}
+
+const getRecipesByName = async (name) => {
+    const res = (await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&query=${name}&number=9`)).data;
+    const results = res.results
+    const apiRecipes = cleanerFunctionAll(results)
+
+    const dbRecipes = await Recipe.findAll({
+        where: {
+            title: {
+                [Op.iLike]: `%${name}%`
+            }
+        }
+    })
+
+    const allRecipes = [...apiRecipes, ...dbRecipes]
+
+    if (allRecipes.length == 0) { throw new Error('Cannot find your recipe') }
+
+    return allRecipes
+};
+
 const getRecipesById = async (id) => {
     const regex = new RegExp("^[0-9]+$")
 
@@ -64,13 +75,12 @@ const getRecipesById = async (id) => {
     if (!recipe || recipe?.length == 0) { throw new Error('Cannot find recipe') }
 
     if (regex.test(recipe.id)) {
-        const cleanRecipe = cleanerFunction(recipe)
+        const cleanRecipe = cleanerFunctionID(recipe)
         return cleanRecipe
     } else {
         return recipe
     }
 };
-
 
 const createRecipe = async (title, summary, healthScore, steps, image, DietId) => {
 

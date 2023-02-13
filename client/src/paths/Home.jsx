@@ -1,18 +1,18 @@
-import RecipeCard from '../components/Card'
-import s from './styles/home.module.css'
 import { getRecipes } from '../redux/actions'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
+import PaginationButtons from '../components/Pagination'
+import RecipeCard from '../components/Card'
+import s from './styles/home.module.css'
 
 export default function Home(props) {
-
+    let recipes = useSelector(state => state.recipes)
+    let offset = useSelector(state => state.offset)
     const dispatch = useDispatch()
-    const recipes = useSelector(state => state.recipes)
-    const i = useSelector(state => state.i)
 
     useEffect(() => {
-        dispatch(getRecipes())
-    }, [i])
+        dispatch(getRecipes(offset))
+    }, [offset])
 
     if (recipes.length === 0) {
         return (
@@ -22,18 +22,21 @@ export default function Home(props) {
         )
     } else {
         return (
-            <div className={s.cards}>
-                {
-                    recipes.map(recipe => (
-                        <RecipeCard
-                            key={recipe.id}
-                            id={recipe.id}
-                            title={recipe.title}
-                            image={recipe.image}
-                            diets={recipe.diets} // DIETS es un array
-                        />
-                    ))
-                }
+            <div className={s.container}>
+                <PaginationButtons />
+                <div className={s.cards}>
+                    {
+                        recipes.map(recipe => (
+                            <RecipeCard
+                                key={recipe.id}
+                                id={recipe.id}
+                                title={recipe.title}
+                                image={recipe.image}
+                                diets={recipe.diets} // DIETS es un array
+                            />
+                        ))
+                    }
+                </div>
             </div>
         )
     }

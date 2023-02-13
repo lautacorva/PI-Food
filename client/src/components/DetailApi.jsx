@@ -17,9 +17,9 @@ export default function ApiDetail({ healthScore, title, diets, dishTypes, image,
             <h2 className={s.steps_title}>Steps</h2>
             <div className={s.steps}>
                 {
-                    steps.map(step => {
+                    steps?.map(step => {
                         return (
-                            <Step number={step.number} step={step.step} />
+                            <Step key={step.number} number={step.number} step={step.step} />
                         )
                     })
                 }

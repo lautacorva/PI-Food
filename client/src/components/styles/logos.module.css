@@ -1,5 +1,6 @@
 .container {
     display: flex;
+    margin-bottom: 20px;
 }
 
 .line{
@@ -9,9 +10,9 @@
 }
 
 .log_container_B{
-    width: 120px;
-    height: 120px;
-    background-image: url('../../media/book.png');
+    width: 135px;
+    height: 135px;
+    background-image: url('../../media/recipe-book.png');
     background-position: center center;
     background-size: cover;
 }

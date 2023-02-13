@@ -18,14 +18,14 @@ function App() {
 
   return (
     <div className='App'>
-      {location.pathname === '/' ? null : <Nav navegateTo={navegateTo} />}
+      {location.pathname === '/' ? null : <Nav navegateTo={navegateTo} location={location}/>}
       <HashRouter>
         <Switch>
           <Route exact path='/'>
-            <LandingP navegateTo={navegateTo} />
+            <LandingP navegateTo={navegateTo}/>
           </Route>
           <Route path='/home'>
-            <Home navegateTo={navegateTo} />
+            <Home navegateTo={navegateTo}/>
           </Route>
           <Route path='/recipes'>
             <Detail navegateTo={navegateTo} />

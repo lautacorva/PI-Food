@@ -1,20 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
 
-:root {
-  --main-white-color: #F5F1E4;
-  --main-traslucent-blue-color: rgba(70, 131, 180, 0.808);
-  --main-brown-color: #A1862F;
-  --main-blue-color:rgb(70, 131, 180);
-  --main-black-color: rgb(48, 46, 46);
-}
-
-
 * {
   box-sizing: border-box;
 }
 
+:root {
+  --main-white-color: #F5F1E4;
+  --main-blue-color:rgb(0, 140, 255);
+  --main-black-color: rgb(48, 46, 46);
+  --main-pink-color: rgb(236, 173, 56);
+}
+
 span {
-  color: steelblue;
+  color: var(--main-blue-color);
 }
 
 body {

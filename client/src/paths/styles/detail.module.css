@@ -4,6 +4,7 @@
 }
 
 .title{
+    font-size: 49px;
     margin: 15px 0px;
 }
 
@@ -23,6 +24,7 @@
 
 .summary{
     text-align: justify;
+    font-size: 20px;
 }
 
 .steps_title{

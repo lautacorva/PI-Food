@@ -1,7 +1,7 @@
 import HealthScore from "./HealthScore"
 import ExtraInfo from "./ExtraInfo"
 import Step from "./Step"
-import s from './styles/apiDetail.module.css'
+import s from './styles/detail.module.css'
 
 export default function ApiDetail({ healthScore, title, diets, dishTypes, image, summary, steps }) {
     return (

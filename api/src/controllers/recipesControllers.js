@@ -5,7 +5,7 @@ const { Recipe } = require('../db.js');
 const { Op } = require("sequelize");
 
 const getAllRecipes = async () => {
-    const res = (await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=3`)).data
+    const res = (await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=18`)).data
     const apiRecipes = res.results
 
     const dbRecipes = await Recipe.findAll()
@@ -15,7 +15,7 @@ const getAllRecipes = async () => {
 }
 
 const getRecipesByName = async (name) => {
-    const res = (await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${name}&number=1`)).data;
+    const res = (await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${name}&number=9`)).data;
     const apiRecipes = res.results
 
     const dbRecipes = await Recipe.findAll({
@@ -39,12 +39,15 @@ const cleanerFunction = (r) => {
         id: r.id,
         title: r.title,
         image: r.image,
-        summary: r.summary.replaceAll(/<(“[^”]”|'[^’]’|[^'”>])*>/g, ""),
+        summary: r.summary.replace(/<[^>]+>/g, ''),
         dishTypes: r.dishTypes,
         diets: r.diets,
         healthScore: r.healthScore,
         steps: r.analyzedInstructions[0]?.steps?.map((e) => {
-            return e.step
+            return {
+                number: e.number,
+                step: e.step
+            }
         })
     }
 }
@@ -58,7 +61,7 @@ const getRecipesById = async (id) => {
             ? (await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`)).data
             : await Recipe.findByPk(id)
 
-    if (!recipe || recipe.length == 0) { throw new Error('Cannot find recipe') }
+    if (!recipe || recipe?.length == 0) { throw new Error('Cannot find recipe') }
 
     if (regex.test(recipe.id)) {
         const cleanRecipe = cleanerFunction(recipe)

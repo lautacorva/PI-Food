@@ -2,7 +2,8 @@ import { GET_RECIPES } from "./actions-type.js";
 
 const initialState = {
     diets: [],
-    recipes: []
+    recipes: [],
+    i: false
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -10,7 +11,7 @@ export default function rootReducer(state = initialState, action) {
         case GET_RECIPES:
             return{
                 ...state,
-                recipes: [...action.payload]
+                recipes: [...action.payload],
             }
             
         default:

@@ -27,7 +27,7 @@ function App() {
           <Route path='/home'>
             <Home navegateTo={navegateTo}/>
           </Route>
-          <Route path='/recipes'>
+          <Route path='/recipes/:id'>
             <Detail navegateTo={navegateTo} />
           </Route>
           <Route path='/submit-your-recipe'>

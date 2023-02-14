@@ -18,7 +18,9 @@ export default function Nav({ location, navegateTo }) {
         return (
             <div className={s.container}>
                 <Logos />
-                <Search />
+                <div className={s.actions}>
+                    <button className={s.create} onClick={() => navegateTo('/submit-your-recipe')}>Create</button><Search />
+                </div>
             </div>
         )
     }

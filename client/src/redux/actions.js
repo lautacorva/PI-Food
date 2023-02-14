@@ -34,3 +34,26 @@ export function ChangePage(offset) {
         payload: offset
     }
 }
+
+export function SubmitRecipe(recipe) {
+    return () => {
+        axios.post(`http://${SERVER_HOST}/recipes`, {
+            title: recipe.title,
+            summary: recipe.summary,
+            image: recipe.image,
+            healthScore: recipe.healthScore,
+            dietsIds: recipe.diets.map(diet => {
+                return (
+                    diet.id
+                )
+            }),
+            steps: recipe.steps
+        })
+            .then(response => {
+                console.log(response);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+}

@@ -82,9 +82,9 @@ const getRecipesById = async (id) => {
     }
 };
 
-const createRecipe = async (title, summary, healthScore, steps, image, DietId) => {
+const createRecipe = async (title, summary, healthScore, steps, image, dietsIds) => {
 
-    if (!title || !summary) { throw new Error('You must complete the required fields') }
+    if (!title || !summary) { throw new Error('Required fields incompletes') }
 
     const exists = await Recipe.findAll({
         where: {
@@ -103,7 +103,10 @@ const createRecipe = async (title, summary, healthScore, steps, image, DietId) =
         image
     });
 
-    await newRecipe.addDiet(DietId)
+    for (const id of dietsIds) {
+        await newRecipe.addDiet(id)
+    }
+
     return newRecipe
 };
 

@@ -39,7 +39,7 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const { title, summary, healthScore, steps, image, DietId } = req.body
+    const { title, summary, healthScore, steps, image, dietsIds } = req.body
     try {
         const controller = await createRecipe(
             title,            
@@ -47,7 +47,7 @@ router.post('/', async (req, res) => {
             healthScore,            
             steps,
             image,
-            DietId
+            dietsIds
         )
         res.status(201).send(controller)
     } catch (error) {

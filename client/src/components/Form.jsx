@@ -1,7 +1,9 @@
+import { useDispatch } from 'react-redux'
 import { useState } from "react"
 import { SubmitRecipe } from "../redux/actions"
+import validation from "../validation"
 
-export default function Form(props) {
+export default function Form({ navigateTo }) {
     const [recipeData, setRecipeData] = useState({
         title: '',
         summary: '',
@@ -14,6 +16,9 @@ export default function Form(props) {
     const [numOfSteps, setNumOfSteps] = useState([])
 
     console.log(recipeData);
+
+    const dispatch = useDispatch()
+
 
     const diets = [
         {
@@ -29,31 +34,25 @@ export default function Form(props) {
             name: 'Pescatarian'
         },
     ]
-    
 
-    function onSubmit(e) {
-        e.preventDefault()
-        SubmitRecipe(recipeData)
-    }
 
     function handleChange(e) {
-        setErrors({
-            ...errors,
+        setErrors(validation({
+            ...recipeData,
             [e.target.name]: e.target.value
-        })
+        }))
 
         setRecipeData({
             ...recipeData,
             [e.target.name]: e.target.value
         })
     }
-
     function addStep() {
         let step = 1
         setNumOfSteps([...numOfSteps, step])
         setRecipeData({
             ...recipeData,
-            steps:[
+            steps: [
                 ...recipeData.steps,
                 {
                     number: numOfSteps.length + 1,
@@ -61,24 +60,71 @@ export default function Form(props) {
                 }
             ]
         })
-        
+
     }
-
     function pushStep(e) {
-        console.log(e.target.id);
-
         let step = recipeData.steps.find(s => (s.number == e.target.id))
-        console.log(recipeData.steps[0].number);
+        let stepsAux = recipeData.steps
 
-        console.log(step);
-
-        let stepsCopy = recipeData.steps
-        stepsCopy[(step.number) - 1].step = e.target.value
+        stepsAux[(step.number) - 1].step = e.target.value
         setRecipeData({
             ...recipeData,
-            steps: stepsCopy
+            steps: stepsAux
         })
     }
+    function onSubmit(e) {
+        e.preventDefault()
+
+        if (!recipeData.title || !recipeData.summary || recipeData.healthScore === 0 || recipeData.diets.length === 0 || recipeData.steps.length === 0) { return alert('Please complete the required fields to submit') }
+
+        setErrors(validation({
+            ...recipeData,
+            [e.target.name]: e.target.value
+        }))
+
+        if (Object.keys(errors).length === 0) {
+            dispatch(SubmitRecipe(recipeData))
+            setRecipeData({
+                title: '',
+                summary: '',
+                healthScore: 0,
+                image: '',
+                steps: [],
+                diets: []
+            })
+            navigateTo('/home')
+            alert('Recipe submited!')
+        } else {
+            alert('Please complete the required fields to submit')
+        }
+
+    }
+
+    function handleDiet(e) {
+        let checked = e.target.checked
+
+        if (checked) {
+            let diet = {
+                id: e.target.id,
+                name: e.target.value
+            }
+            setRecipeData({
+                ...recipeData,
+                diets: [
+                    ...recipeData.diets,
+                    diet
+                ]
+            })
+        }
+        if (!checked) {
+            const dietsAux = recipeData.diets.filter(d => d.id !== e.target.id)
+            setRecipeData({
+                ...recipeData,
+                diets: [...dietsAux]
+            })
+        }
+    }
+
 
     return (
         <div>
@@ -106,7 +152,7 @@ export default function Form(props) {
                             return (
                                 <div key={diet.id}>
                                     <label>
-                                        <input type="checkbox" name={diet.name} id={diet.id} />
+                                        <input type="checkbox" name="diet" id={diet.id} value={diet.name} onChange={handleDiet} />
                                         {diet.name}
                                     </label><br />
                                 </div>

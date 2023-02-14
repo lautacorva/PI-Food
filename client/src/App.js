@@ -12,26 +12,26 @@ function App() {
   const location = useLocation()
 
   const history = useHistory()
-  const navegateTo = (url) => {
+  const navigateTo = (url) => {
     history.push(url)
   }
 
   return (
     <div className='App'>
-      {location.pathname === '/' ? null : <Nav navegateTo={navegateTo} location={location}/>}
+      {location.pathname === '/' ? null : <Nav navigateTo={navigateTo} location={location}/>}
       <HashRouter>
         <Switch>
           <Route exact path='/'>
-            <LandingP navegateTo={navegateTo}/>
+            <LandingP navigateTo={navigateTo}/>
           </Route>
           <Route path='/home'>
-            <Home navegateTo={navegateTo}/>
+            <Home navigateTo={navigateTo}/>
           </Route>
           <Route path='/recipes/:id'>
-            <Detail navegateTo={navegateTo} />
+            <Detail navigateTo={navigateTo} />
           </Route>
           <Route path='/submit-your-recipe'>
-            <Submit navegateTo={navegateTo} />
+            <Submit navigateTo={navigateTo} />
           </Route>
         </Switch>
       </HashRouter>

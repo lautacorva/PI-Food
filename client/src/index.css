@@ -6,13 +6,28 @@
 
 :root {
   --main-white-color: #F5F1E4;
-  --main-blue-color:rgb(0, 140, 255);
+  --main-blue-color: rgb(0, 140, 255);
   --main-black-color: rgb(48, 46, 46);
-  --main-pink-color: rgb(236, 173, 56);
+  --main-pink-color: rgb(226, 99, 188);
 }
 
 span {
   color: var(--main-blue-color);
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 3px solid var(--main-blue-color);
+  color: var(--main-blue-color);
+  background-color: transparent;
+}
+
+button:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 3px black;
 }
 
 body {
@@ -29,7 +44,7 @@ code {
     monospace;
 }
 
-h1{
+h1 {
   font-size: 40px;
 }
 

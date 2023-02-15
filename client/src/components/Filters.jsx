@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { getDiets, FilterRecipes } from '../redux/actions'
 import { DEF } from './Order'
+import s from './styles/filters.module.css'
 
 export default function Filters(props) {
     const dispatch = useDispatch()
@@ -19,9 +20,10 @@ export default function Filters(props) {
     }
 
     return (
-        <div>
-            <select name="diets" onChange={onSelect}>
-                <option selected value={DEF}>Default</option>
+        <div className={s.container}>
+            <span className={s.text}>Diets</span>
+            <select name="diets" onChange={onSelect} className={s.select}>
+                <option selected value={DEF}>default</option>
                 {
                     diets.map(d => {
                         return (

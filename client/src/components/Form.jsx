@@ -1,6 +1,6 @@
-import { useDispatch } from 'react-redux'
-import { useState } from "react"
-import { SubmitRecipe } from "../redux/actions"
+import { useState, useEffect } from "react"
+import { useDispatch, useSelector } from 'react-redux'
+import { getDiets, SubmitRecipe } from "../redux/actions"
 import validation from "../validation"
 
 export default function Form({ navigateTo }) {
@@ -14,26 +14,15 @@ export default function Form({ navigateTo }) {
     })
     const [errors, setErrors] = useState({})
     const [numOfSteps, setNumOfSteps] = useState([])
-
-    console.log(recipeData);
-
+    const diets = useSelector(state => state.diets)
     const dispatch = useDispatch()
 
+    console.log(recipeData);
+    console.log(diets);
 
-    const diets = [
-        {
-            id: 1,
-            name: 'Vegano'
-        },
-        {
-            id: 2,
-            name: 'Carnivoro'
-        },
-        {
-            id: 3,
-            name: 'Pescatarian'
-        },
-    ]
+    useEffect(() => {
+        dispatch(getDiets())
+    }, [dispatch])
 
 
     function handleChange(e) {
@@ -60,46 +49,7 @@ export default function Form({ navigateTo }) {
                 }
             ]
         })
-
     }
-    function pushStep(e) {
-        let step = recipeData.steps.find(s => (s.number == e.target.id))
-        let stepsAux = recipeData.steps
-
-        stepsAux[(step.number) - 1].step = e.target.value
-        setRecipeData({
-            ...recipeData,
-            steps: stepsAux
-        })
-    }
-    function onSubmit(e) {
-        e.preventDefault()
-
-        if (!recipeData.title || !recipeData.summary || recipeData.healthScore === 0 || recipeData.diets.length === 0 || recipeData.steps.length === 0) { return alert('Please complete the required fields to submit') }
-
-        setErrors(validation({
-            ...recipeData,
-            [e.target.name]: e.target.value
-        }))
-
-        if (Object.keys(errors).length === 0) {
-            dispatch(SubmitRecipe(recipeData))
-            setRecipeData({
-                title: '',
-                summary: '',
-                healthScore: 0,
-                image: '',
-                steps: [],
-                diets: []
-            })
-            navigateTo('/home')
-            alert('Recipe submited!')
-        } else {
-            alert('Please complete the required fields to submit')
-        }
-
-    }
-
     function handleDiet(e) {
         let checked = e.target.checked
 
@@ -123,6 +73,53 @@ export default function Form({ navigateTo }) {
                 diets: [...dietsAux]
             })
         }
+
+        setErrors(validation({
+            ...recipeData,
+            [e.target.name]: e.target.value
+        }))
+    }
+    function handleStep(e) {
+        let step = recipeData.steps.find(s => (s.number == e.target.id))
+        let stepsAux = recipeData.steps
+
+
+        stepsAux[(step.number) - 1].step = e.target.value
+        setRecipeData({
+            ...recipeData,
+            steps: stepsAux
+        })
+
+        setErrors(validation({
+            ...recipeData,
+            [e.target.name]: e.target.value
+        }))
+    }
+    function onSubmit(e) {
+        e.preventDefault()
+
+        if (!recipeData.title || !recipeData.summary || recipeData.healthScore === 0 || recipeData.diets.length === 0 || recipeData.steps.length === 0) { return alert('Please complete the required fields to submit') }
+
+        setErrors(validation({
+            ...recipeData,
+            [e.target.name]: e.target.value
+        }))
+
+        if (Object.keys(errors).length === 2) {
+            dispatch(SubmitRecipe(recipeData))
+            setRecipeData({
+                title: '',
+                summary: '',
+                healthScore: 0,
+                image: '',
+                steps: [],
+                diets: []
+            })
+            navigateTo('/home')
+            alert('Recipe submited!')
+        } else {
+            alert('Please complete the required fields to submit')
+        }
     }
 
 
@@ -133,16 +130,19 @@ export default function Form({ navigateTo }) {
                 <div>
                     <h3>Title</h3>
                     <input type="text" name="title" value={recipeData.title} onChange={handleChange} />
+                    {errors.title && <p>{errors.title}</p>}
                 </div>
 
                 <div>
                     <h3>Summary</h3>
                     <input type="text" name="summary" value={recipeData.summary} onChange={handleChange} />
+                    {errors.summary && <p>{errors.summary}</p>}
                 </div>
 
                 <div>
                     <h3>Health Score</h3>
                     <input type="number" name="healthScore" value={recipeData.healthScore} onChange={handleChange} max="100" />
+                    {errors.healthScore && <p>{errors.healthScore}</p>}
                 </div>
 
                 <div>
@@ -159,6 +159,7 @@ export default function Form({ navigateTo }) {
                             )
                         })
                     }
+                    {errors.diets && <p>{errors.diets}</p>}
                 </div>
 
                 <div>
@@ -174,14 +175,19 @@ export default function Form({ navigateTo }) {
                                 return (
                                     <div key={i}>
                                         <div>{i + 1}</div>
-                                        <input type="text" id={i + 1} onChange={pushStep} />
+                                        <input type="text" id={i + 1} onChange={handleStep} />
                                     </div>
                                 )
                             })
                         }
+                        {errors.steps && <p>{errors.steps}</p>}
                     </div>
-                    <button onClick={addStep}>+ Add step</button>
+                    <button type="button" onClick={addStep}>+ Add step</button>
                 </div>
+
+                <hr />
+
+                <button type="submit">Submit</button>
 
             </form>
         </div>

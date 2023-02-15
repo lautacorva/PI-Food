@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import s from './styles/card.module.css'
 
 export default function RecipeCard({ id, title, image, diets }) {
-    const dietsString = diets.join(', ')
+    const dietsString = diets?.join(', ')
 
     return (
         <Link to={`/recipes/${id}`} style={{ textDecoration: 'none' }}>

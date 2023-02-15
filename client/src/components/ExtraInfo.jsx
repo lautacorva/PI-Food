@@ -1,7 +1,7 @@
 import s from './styles/extra.module.css'
 
 export default function ExtraInfo({ diets, dishTypes }) {
-    const joinedDiets = diets.join(', ')
+    const joinedDiets = diets?.join(', ')
 
     if (dishTypes) {
         const joinedDishTypes = dishTypes.join(', ')

@@ -1,4 +1,4 @@
-import { getRecipes } from '../redux/actions'
+import { getApiRecipes } from '../redux/actions'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import PaginationButtons from '../components/Pagination'
@@ -6,17 +6,26 @@ import RecipeCard from '../components/Card'
 import s from './styles/home.module.css'
 
 export default function Home(props) {
-    let recipes = useSelector(state => state.recipes)
-    let offset = useSelector(state => state.offset)
     const dispatch = useDispatch()
+    let offset = useSelector(state => state.offset)
+    let filter = useSelector(state => state.filter)
 
     useEffect(() => {
-        dispatch(getRecipes(offset))
+        dispatch(getApiRecipes(offset))
     }, [offset])
 
-    if (recipes.length === 0) {
+    const recipes = useSelector(state => state.filtered_recipes)
+    console.log(recipes);
+
+    if (recipes.length === 0 && filter === true) {
         return (
-            <div className={s.loading}>
+            <div>
+                <h3>Cannot find recipes</h3>
+            </div>
+        )
+    } else if (recipes.length === 0) {
+        return (
+            <div>
                 <h3>Loading...</h3>
             </div>
         )
@@ -32,7 +41,7 @@ export default function Home(props) {
                                 id={recipe.id}
                                 title={recipe.title}
                                 image={recipe.image}
-                                diets={recipe.diets} // DIETS es un array
+                                diets={recipe.diets}
                             />
                         ))
                     }

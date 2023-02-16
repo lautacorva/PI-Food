@@ -18,17 +18,17 @@ export default function validation(input) {
     else if (typeof input.summary != 'string') { errors.summary = 'The summary cannot be a number' }
 
     // -- HEALTH SCORE --
-    if (!input.healthScore) { errors.healthScore = 'Please enter a Health Score' }
+    if (!input.healthScore) { errors.healthScore = 'Please enter a recipe Health Score' }
     else if (input.healthScore < 0 || input.healthScore > 100) { errors.healthScore = 'Healt Score must be a number between 0 and 100' }
     else if (blankSpace.test(input.healthScore)) { errors.healthScore = 'Health Score cannot be a blanck space' }
 
     // -- DIETS --    
-    if (input.diets.length === 0) { errors.diets = 'Por favor indica las dietas correspondientes' }
+    if (input.diets.length === 0) { errors.diets = 'Please indicate at least two diets' }
     else if (input.diets.length > 0) { errors.diets = '' }
     console.log(input.diets.length);
 
     // -- STEPS --
-    if (input.steps.length === 0) { errors.steps = 'Por favor indica al menos un paso' }
+    if (input.steps.length === 0) { errors.steps = 'Please indicate at least one step' }
     else if (input.steps.length > 0) { errors.steps = '' }
 
     console.log(input.steps.length);

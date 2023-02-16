@@ -1,4 +1,4 @@
-import { getApiRecipes, getDbRecipes, getDiets } from '../redux/actions'
+import { getApiRecipes, getDbRecipes } from '../redux/actions'
 import { useSelector, useDispatch } from 'react-redux'
 import Logos from './Logos'
 import Search from './Search'
@@ -21,7 +21,7 @@ export default function Nav({ location, navigateTo }) {
 
     if (location.pathname !== '/home') {
         return (
-            <div className={s.container}>
+            <div className={s.up}>
                 <Logos />
                 <div className={s.actions}>
                     <div className={s.button}><ArrowButton onClick={() => navigateTo('/home')} /></div><Search />
@@ -31,22 +31,23 @@ export default function Nav({ location, navigateTo }) {
     } else {
         return (
             <div className={s.container}>
-                <Logos />
 
-                <div className={s.actions}>
-                    <button className={s.create} onClick={() => navigateTo('/submit-your-recipe')}>Create</button> <Search />
+                <div className={s.up}>
+                    <Logos />
+                    <div className={s.actions}>
+                        <button className={s.create} onClick={() => navigateTo('/submit-your-recipe')}>Submit your recipe</button> <Search />
+                    </div>
                 </div>
 
                 <div className={s.options}>
-                    <div>
-                        <label><input type="checkbox" onClick={onClicked} />Show my recipes</label>
+                    <div className={s.show}>
+                        <label className={s.label}><input type="checkbox" onClick={onClicked} className={s.check} />Show my recipes</label>
                     </div>
 
                     <div className={s.selects}>
-                    <Order />
-                    <Filters />
+                        <Order />
+                        <Filters />
                     </div>
-                    
                 </div>
 
             </div>

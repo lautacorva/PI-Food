@@ -1,8 +1,12 @@
+.link{
+    color: var(--main-black-color);
+    text-decoration: none;
+}
+
 .container {
-    border: 1px solid black;
     display: flex;
     width: 100%;
-    margin: 5px 0px;
+    margin: 9px 0px;
     text-decoration: none;
 }
 
@@ -35,7 +39,7 @@
     margin-top: 0;
 }
 
-.title:hover {
+.container:hover {
     cursor: pointer;
     color: var(--main-blue-color);
 }

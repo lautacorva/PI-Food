@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import { getDiets, SubmitRecipe } from "../redux/actions"
 import validation from "../validation"
+import s from './styles/form.module.css'
 
 export default function Form({ navigateTo }) {
     const [recipeData, setRecipeData] = useState({
@@ -18,7 +19,6 @@ export default function Form({ navigateTo }) {
     const dispatch = useDispatch()
 
     console.log(recipeData);
-    console.log(diets);
 
     useEffect(() => {
         dispatch(getDiets())
@@ -122,74 +122,87 @@ export default function Form({ navigateTo }) {
         }
     }
 
-
     return (
-        <div>
+        <div className={s.container}>
             <form onSubmit={(e) => onSubmit(e)}>
 
-                <div>
-                    <h3>Title</h3>
-                    <input type="text" name="title" value={recipeData.title} onChange={handleChange} />
-                    {errors.title && <p>{errors.title}</p>}
-                </div>
+                <div className={s.all}>
 
-                <div>
-                    <h3>Summary</h3>
-                    <input type="text" name="summary" value={recipeData.summary} onChange={handleChange} />
-                    {errors.summary && <p>{errors.summary}</p>}
-                </div>
+                    <div className={s.inputs}>
 
-                <div>
-                    <h3>Health Score</h3>
-                    <input type="number" name="healthScore" value={recipeData.healthScore} onChange={handleChange} max="100" />
-                    {errors.healthScore && <p>{errors.healthScore}</p>}
-                </div>
+                        <div className={s.i_container}>
+                            <h3 className={s.text}>Title <span>*</span></h3>
+                            <input className={s.input} type="text" name="title" value={recipeData.title} onChange={handleChange} />
+                            {errors.title && <p className={s.error}>{errors.title}</p>}
+                        </div>
 
-                <div>
-                    <h3>Diets</h3>
-                    {
-                        diets.map((diet) => {
-                            return (
-                                <div key={diet.id}>
-                                    <label>
-                                        <input type="checkbox" name="diet" id={diet.id} value={diet.name} onChange={handleDiet} />
-                                        {diet.name}
-                                    </label><br />
-                                </div>
-                            )
-                        })
-                    }
-                    {errors.diets && <p>{errors.diets}</p>}
-                </div>
+                        <div className={s.i_container}>
+                            <h3 className={s.text}>Summary <span>*</span></h3>
+                            <input className={s.input} type="text" name="summary" value={recipeData.summary} onChange={handleChange} />
+                            {errors.summary && <p className={s.error}>{errors.summary}</p>}
+                        </div>
 
-                <div>
-                    <h3>Image</h3>
-                    <input type="text" name="image" value={recipeData.image} onChange={handleChange} />
-                </div>
+                        <div className={s.i_container}>
+                            <h3 className={s.text}>Health Score <span>*</span></h3>
+                            <input className={s.input} type="number" name="healthScore" value={recipeData.healthScore} onChange={handleChange} max="100" />
+                            {errors.healthScore && <p className={s.error}>{errors.healthScore}</p>}
+                        </div>
 
-                <div>
-                    <h3>Steps</h3>
-                    <div>
-                        {
-                            numOfSteps.map((step, i) => {
-                                return (
-                                    <div key={i}>
-                                        <div>{i + 1}</div>
-                                        <input type="text" id={i + 1} onChange={handleStep} />
-                                    </div>
-                                )
-                            })
-                        }
-                        {errors.steps && <p>{errors.steps}</p>}
+                        <div className={s.i_container}>
+                            <h3 className={s.text}>Image link</h3>
+                            <input className={s.input} type="url" name="image" value={recipeData.image} onChange={handleChange} />
+                        </div>
+
+                        <div className={s.i_container}>
+                            <h3 className={s.text}>Diets <span>*</span></h3>
+                            <div className={s.diets}>
+                                {
+                                    diets.map((diet) => {
+                                        return (
+                                            <div style={{ margin: '10px' }} key={diet.id}>
+                                                <label>
+                                                    <input style={{ height: '17px', width: '17px' }} type="checkbox" name="diet" id={diet.id} value={diet.name} onChange={handleDiet} />
+                                                    {diet.name}
+                                                </label><br />
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                            {errors.diets && <p className={s.error}>{errors.diets}</p>}
+                        </div>
+
                     </div>
-                    <button type="button" onClick={addStep}>+ Add step</button>
+
+                    <div className={s.steps}>
+                        <h3 className={s.text}>Steps <span>*</span></h3>
+
+                        <div>
+                            {
+                                numOfSteps.map((step, i) => {
+                                    return (
+                                        <div style={{ marginBottom: '10px' }} key={i}>
+                                            <textarea className={s.textarea} style={{resize: 'none'}} type="text" id={i + 1} onChange={handleStep} placeholder={'Step ' + (i + 1)} />
+                                        </div>
+                                    )
+                                })
+                            }
+                            {errors.steps && <p className={s.error}>{errors.steps}</p>}
+                        </div>
+
+                        <button className={s.addStep} type="button" onClick={addStep}>+ Add step</button>
+                    </div>
+
                 </div>
 
                 <hr />
 
-                <button type="submit">Submit</button>
+                <div className={s.submit_container}>
+                    <button type="submit" className={s.submit}>Submit</button>
+                </div>
 
             </form>
         </div>
+
     )
 }

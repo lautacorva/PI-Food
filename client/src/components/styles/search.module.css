@@ -5,6 +5,7 @@
 
 .text{
     display: none;
+    color: white;
 }
 
 .search_bar{
@@ -28,7 +29,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 70vw;
+    width: 67vw;
 }
 
 .input{
@@ -43,6 +44,7 @@
 @media (min-width: 913px){
     .text{
         display: block;
+        margin-top: 0;
     }
 
     .search_bar{
@@ -50,6 +52,6 @@
     }
     
     .input_container{
-        width: 40vw;
+        width: 30vw;
     }
 }

@@ -1,14 +1,33 @@
+.loading_cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 90px;
+    height: 70vh;
+}
+
+.loading{
+    width: 200px;
+    height: 200px;
+    background-image: url('../../media/loading.gif');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
 .container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 30px 10px;
 }
 
 .cards {
     padding: 15px;
     display: flex;
     flex-direction: column;
+    background-color: rgba(235, 232, 232, 0.849);
 }
 
 @media (min-width: 763px) {
@@ -21,7 +40,7 @@
 
 @media (min-width: 913px) {
     .container{
-        margin-top: 220px;
+        margin-top: 240px;
     }
 
     .cards {

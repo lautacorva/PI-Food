@@ -1,7 +1,8 @@
 import './App.css';
 import { Route, HashRouter, Switch } from 'react-router-dom'
 import { useHistory, useLocation } from 'react-router-dom'
-import Nav from './components/Nav';
+import Nav from './components/Nav'
+import Footer from './components/Footer';
 import LandingP from './paths/LandingP.jsx'
 import Home from './paths/Home.jsx'
 import Detail from './paths/Detail.jsx'
@@ -18,14 +19,14 @@ function App() {
 
   return (
     <div className='App'>
-      {location.pathname === '/' ? null : <Nav navigateTo={navigateTo} location={location}/>}
+      {location.pathname === '/' ? null : <Nav navigateTo={navigateTo} location={location} />}
       <HashRouter>
         <Switch>
           <Route exact path='/'>
-            <LandingP navigateTo={navigateTo}/>
+            <LandingP navigateTo={navigateTo} />
           </Route>
           <Route path='/home'>
-            <Home navigateTo={navigateTo}/>
+            <Home navigateTo={navigateTo} />
           </Route>
           <Route path='/recipes/:id'>
             <Detail navigateTo={navigateTo} />
@@ -35,6 +36,7 @@ function App() {
           </Route>
         </Switch>
       </HashRouter>
+      {location.pathname === '/' ? null : <Footer />}
     </div>
   );
 }

@@ -19,14 +19,16 @@ export default function Home(props) {
 
     if (recipes.length === 0 && filter === true) {
         return (
-            <div>
-                <h3>Cannot find recipes</h3>
+            <div className={s.message_container}>
+                <div className={s.message}>
+                    <h3>cannot find any recipes</h3>
+                </div>
             </div>
         )
     } else if (recipes.length === 0) {
         return (
-            <div>
-                <h3>Loading...</h3>
+            <div className={s.loading_cont}>
+                <div className={s.loading}></div>
             </div>
         )
     } else {

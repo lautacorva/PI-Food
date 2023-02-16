@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getApiRecipes, getApiRecipesByName } from '../redux/actions'
+import { useDispatch} from 'react-redux'
+import { getApiRecipesByName } from '../redux/actions'
 import s from './styles/search.module.css'
 
 export default function Search(props) {

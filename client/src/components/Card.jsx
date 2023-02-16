@@ -5,7 +5,7 @@ export default function RecipeCard({ id, title, image, diets }) {
     const dietsString = diets?.join(', ')
 
     return (
-        <Link to={`/recipes/${id}`} style={{ textDecoration: 'none' }}>
+        <Link to={`/recipes/${id}`} className={s.link}>
             <div className={s.container}>
                 <div className={s.img_container} style={{ backgroundImage: `url(${image})` }}></div>
                 <div className={s.text}>

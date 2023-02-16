@@ -34,9 +34,10 @@ export default function Nav({ location, navigateTo }) {
 
                 <div className={s.up}>
                     <Logos />
-                    <div className={s.actions}>
-                        <button className={s.create} onClick={() => navigateTo('/submit-your-recipe')}>Submit your recipe</button> <Search />
-                    </div>
+
+                    <button className={s.create} onClick={() => navigateTo('/submit-your-recipe')}>Submit your recipe!</button>
+
+                    <Search />
                 </div>
 
                 <div className={s.options}>

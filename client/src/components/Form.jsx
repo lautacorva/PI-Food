@@ -151,6 +151,7 @@ export default function Form({ navigateTo }) {
                         <div className={s.i_container}>
                             <h3 className={s.text}>Image link</h3>
                             <input className={s.input} type="url" name="image" value={recipeData.image} onChange={handleChange} />
+                            {errors.image && <p className={s.error}>{errors.image}</p>}
                         </div>
 
                         <div className={s.i_container}>
@@ -182,7 +183,7 @@ export default function Form({ navigateTo }) {
                                 numOfSteps.map((step, i) => {
                                     return (
                                         <div style={{ marginBottom: '10px' }} key={i}>
-                                            <textarea className={s.textarea} style={{resize: 'none'}} type="text" id={i + 1} onChange={handleStep} placeholder={'Step ' + (i + 1)} />
+                                            <textarea className={s.textarea} style={{ resize: 'none' }} type="text" id={i + 1} onChange={handleStep} placeholder={'Step ' + (i + 1)} />
                                         </div>
                                     )
                                 })

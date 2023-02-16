@@ -1,6 +1,7 @@
 .container{
     padding: 15px;
-    padding-top: 0;
+    margin: 20px;
+    background-color: white;
 }
 
 .title{
@@ -38,7 +39,8 @@
 
 @media (min-width: 913px){
     .container{
-        padding: 40px;
+        padding: 30px;
+        margin: 30px;
     }
 
     .title{
@@ -53,12 +55,13 @@
 
     .img_container{
         width: 50%;
+        margin-top: 30px;
     }
 
     .summary{
         width: 50%;
-        padding: 25px;
-        font-size: 20px;
+        padding: 0px 55px;
+        font-size: 22px;
     }
 
     .steps_title{
@@ -66,8 +69,6 @@
     }
 
     .steps{
-        align-items: center;
-        justify-content: center;
         max-width: 90%;
     }
 

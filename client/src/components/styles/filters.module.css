@@ -4,7 +4,7 @@
     margin: 0px 10px;
     border-radius: 6px;
     background-color: white;
-    /* outline: 3px solid var(--main-blue-color); */
+    outline: 3px solid var(--main-red-color);
 }
 
 .select{

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import ApiDetail from "../components/DetailApi"
 import DbDetail from "../components/DetailDb"
+import Loading from "../components/Loading"
 
 
 export default function Detail(props) {
@@ -23,9 +24,7 @@ export default function Detail(props) {
 
     if (Recipe == null) {
         return (
-            <div>
-                <h3>Loading</h3>
-            </div>
+            <Loading />
         )
     } else {
         if (regex.test(id)) {

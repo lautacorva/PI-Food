@@ -28,8 +28,8 @@
 }
 
 @media (min-width: 913px){
-    .container{
-        font-size: 20px;
+    .step{
+        font-size: 22px;
     }
 
     .step_number{

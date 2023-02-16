@@ -1,6 +1,7 @@
 .container{
     padding: 15px;
-    margin-top: -20px;
+    margin: 20px;
+    background-color: rgb(255, 255, 255);
 }
 
 .parr{
@@ -18,8 +19,13 @@
 }
 
 @media (min-width: 913px) {
+    .container{
+        padding: 30px;
+        margin: 30px;
+    }
+
     .parr{
-        font-size: 22px;
+        font-size: 23px;
         width: 54%;
         text-align: center;
         margin-left: auto;

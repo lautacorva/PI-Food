@@ -69,6 +69,8 @@
     font-size: 25px;
     padding: 5px;
     width: 300px;
+    color: white;
+    background-color: var(--main-red-color);
 }
 
 .error{
@@ -78,6 +80,10 @@
 }
 
 @media (min-width: 913px) {
+    .container{
+        padding: 40px;
+    }
+    
     .input{
         width: 90%;
     }

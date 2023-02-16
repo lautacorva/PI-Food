@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import PaginationButtons from '../components/Pagination'
 import RecipeCard from '../components/Card'
+import Loading from '../components/Loading'
 import s from './styles/home.module.css'
 
 export default function Home(props) {
@@ -27,9 +28,7 @@ export default function Home(props) {
         )
     } else if (recipes.length === 0) {
         return (
-            <div className={s.loading_cont}>
-                <div className={s.loading}></div>
-            </div>
+            <Loading />
         )
     } else {
         return (

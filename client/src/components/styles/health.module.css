@@ -30,16 +30,12 @@
 }
 
 @media (min-width: 913px) {
-    .container {
-        margin-top: 180px;
-    }
-
     .img_container {
         height: 40px;
         width: 40px;
     }
 
-    .hs{
+    .hs {
         font-size: 19px;
     }
 

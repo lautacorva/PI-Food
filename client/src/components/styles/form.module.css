@@ -1,5 +1,6 @@
 .container{
     text-align: left;
+    padding: 5px;
 }
 
 .all{
@@ -25,7 +26,7 @@
 }
 
 .input:focus{
-    outline: 3px solid var(--main-blue-color);
+    outline: 3px solid var(--main-red-color);
 }
 
 .textarea{
@@ -36,7 +37,7 @@
 }
 
 .textarea:focus{
-    outline: 3px solid var(--main-blue-color);
+    outline: 3px solid var(--main-red-color);
 }
 
 .diets{
@@ -100,5 +101,7 @@
 
     .steps{
         width: 50%;
+        margin-bottom: 0;
+        margin-top: 8px;
     }
 }

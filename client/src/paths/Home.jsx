@@ -20,11 +20,10 @@ export default function Home(props) {
 
     if (recipes.length === 0 && filter === true) {
         return (
-            <div className={s.message_container}>
-                <div className={s.message}>
-                    <h3>cannot find any recipes</h3>
-                </div>
-            </div>
+            <>
+                <Loading />
+                <h2>It looks like there is no recipes created by you...</h2>
+            </>
         )
     } else if (recipes.length === 0) {
         return (

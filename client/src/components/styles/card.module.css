@@ -41,7 +41,7 @@
 
 .container:hover {
     cursor: pointer;
-    color: var(--main-blue-color);
+    color: var(--main-red-color);
 }
 
 @media (min-width: 763px) {

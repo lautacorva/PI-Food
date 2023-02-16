@@ -5,8 +5,6 @@
 }
 
 :root {
-  --main-blue-color: #c94d65;
-  /* --main-blue-color: rgb(30, 148, 245); */
   --main-black-color: rgb(31, 30, 30);
   --main-red-color: #c94d65;
   --main-yellow-color: #e7c049;
@@ -21,7 +19,7 @@
 .color5 { #1f6764 }; */
 
 span {
-  color: var(--main-blue-color);
+  color: var(--main-red-color);
 }
 
 button {
@@ -30,8 +28,8 @@ button {
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  border: 3px solid var(--main-blue-color);
-  color: var(--main-blue-color);
+  border: 3px solid var(--main-red-color);
+  color: var(--main-red-color);
   background-color: transparent;
 }
 
